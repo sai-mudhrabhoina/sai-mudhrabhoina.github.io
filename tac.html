@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truck Activity Comparison · Sai Raghava Mudhrabhoina</title>
+<meta name="description" content="Compares every truck with the fleet and prices what closing the gap to a target would be worth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-project="tac">
+
+<div class="bar">
+  <div class="wrap">
+    <span class="loc">Toronto, ON</span>
+    <ul aria-label="Contact">
+      <li><a href="mailto:sairaghavsql@gmail.com">sairaghavsql@gmail.com</a></li>
+      <li><a href="tel:+15485422198">+1 (548) 542-2198</a></li>
+      <li><a href="https://www.linkedin.com/in/sai-mudhrabhoina-4414b4220" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="crumb" href="index.html#work">&larr; All dashboards</a>
+    <div class="titlerow"><span class="num">02</span><h1 class="title">Truck Activity Comparison</h1></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notes" hidden data-notes>
+    <div data-note-box="problem" hidden><h3>The problem</h3><p data-note="problem"></p></div>
+    <div data-note-box="role" hidden><h3>My role</h3><p data-note="role"></p></div>
+  </div>
+
+  <div class="intro">
+      <div>
+        <p>Measures every truck against the rest of the fleet on cost impact, loads per day, cycle time, busy hours and usage. Select a truck to see its rank on each measure, its trend against the fleet average, and a usage calculator that prices what closing the gap to a target would be worth.</p>
+        <h3>Questions it answers</h3>
+        <ul>
+          <li>Which trucks cost the most compared with the fleet?</li>
+          <li>Where does a truck lose time: loading, travelling or unloading?</li>
+          <li>What is it worth to bring a truck up to target?</li>
+        </ul>
+        <ul class="chips" aria-label="Details">
+          <li>Ready-mix concrete</li>
+          <li>226 DAX measures</li>
+          <li>Imperial and metric</li>
+          <li>Tooltip pages</li>
+          <li>Delivery timeline</li>
+        </ul>
+      </div>
+      <div>
+        <div class="video"><video controls preload="metadata" playsinline poster="img/tac2_truck.jpg" aria-label="Walkthrough of the Truck Activity Comparison dashboard"><source src="video/tac_demo.mp4" type="video/mp4"></video></div>
+        <p class="vnote">20-second silent walkthrough, including the View Details page.</p>
+      </div>
+    </div>
+
+    <div class="shots" data-shots>
+      <h3>Screenshots</h3>
+      <div class="tabs" role="group" aria-label="Truck Activity Comparison screenshots">
+        <button type="button" aria-pressed="true"  data-src="img/tac1_fleet.jpg"    data-cap="Every truck against the fleet average on cost impact, loads per day, cycle time and busy hours.">Fleet</button>
+        <button type="button" aria-pressed="false" data-src="img/tac2_truck.jpg"    data-cap="A selected truck: rank in the fleet on each measure, trend against the fleet average, and the usage calculator.">Selected truck</button>
+        <button type="button" aria-pressed="false" data-src="img/tac3_details.jpg"  data-cap="View Details: every delivery for the truck, with the step-by-step timeline from assignment to return and the map.">View Details</button>
+      </div>
+      <figure class="shot"><a href="img/tac1_fleet.jpg" target="_blank" rel="noopener"><img src="img/tac1_fleet.jpg" width="1274" height="690" alt="Truck Activity Comparison dashboard, fleet view" loading="lazy"></a><figcaption>Every truck against the fleet average on cost impact, loads per day, cycle time and busy hours.</figcaption></figure>
+    </div>
+
+    <div class="live" hidden data-live="tac" data-title="Truck Activity Comparison report">
+      <h3>Live report</h3>
+      <div class="frame"></div>
+      <p class="open"></p>
+    </div>
+  
+  <nav class="pager" aria-label="More dashboards"><a href="ccos.html">&larr; Customer Cost of Service</a><a href="oat.html">Order Activity Tracker &rarr;</a></nav>
+</main>
+
+<footer><div class="wrap">The dashboards on this page use synthetic sample data. No client information appears in them.</div></footer>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

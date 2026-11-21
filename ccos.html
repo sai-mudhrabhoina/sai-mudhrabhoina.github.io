@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customer Cost of Service · Sai Raghava Mudhrabhoina</title>
+<meta name="description" content="Ranks customers, job sites, products and projects by what they cost to serve, with what-if targets for load size and time on site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-project="ccos">
+
+<div class="bar">
+  <div class="wrap">
+    <span class="loc">Toronto, ON</span>
+    <ul aria-label="Contact">
+      <li><a href="mailto:sairaghavsql@gmail.com">sairaghavsql@gmail.com</a></li>
+      <li><a href="tel:+15485422198">+1 (548) 542-2198</a></li>
+      <li><a href="https://www.linkedin.com/in/sai-mudhrabhoina-4414b4220" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="crumb" href="index.html#work">&larr; All dashboards</a>
+    <div class="titlerow"><span class="num">01</span><h1 class="title">Customer Cost of Service</h1></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notes" hidden data-notes>
+    <div data-note-box="problem" hidden><h3>The problem</h3><p data-note="problem"></p></div>
+    <div data-note-box="role" hidden><h3>My role</h3><p data-note="role"></p></div>
+  </div>
+
+  <div class="intro">
+      <div>
+        <p>Shows what each customer really costs to serve. Delivery data is turned into a cost per cubic yard and ranked by how far each customer sits above or below the average, so the costliest ones come first, next to the drivers behind the number: load size, time on site, wait to unload and travel time.</p>
+        <h3>Questions it answers</h3>
+        <ul>
+          <li>Which customers cost the most to serve, and why?</li>
+          <li>Does the cost sit with the customer, a job site, a product or a project?</li>
+          <li>What would a better average load size or less time on site be worth over a year?</li>
+        </ul>
+        <ul class="chips" aria-label="Details">
+          <li>Ready-mix concrete</li>
+          <li>118 DAX measures</li>
+          <li>Imperial and metric</li>
+          <li>What-if targets</li>
+          <li>Delivery map</li>
+        </ul>
+      </div>
+      <div>
+        <div class="video"><video controls preload="metadata" playsinline poster="img/ccos1_customer.jpg" aria-label="Walkthrough of the Customer Cost of Service dashboard"><source src="video/ccos_demo.mp4" type="video/mp4"></video></div>
+        <p class="vnote">25-second silent walkthrough, including the View Details page.</p>
+      </div>
+    </div>
+
+    <div class="shots" data-shots>
+      <h3>Screenshots</h3>
+      <div class="tabs" role="group" aria-label="Customer Cost of Service screenshots">
+        <button type="button" aria-pressed="true"  data-src="img/ccos1_customer.jpg" data-cap="Customers ranked by annualized cost impact against the average, with the cost drivers beside each one.">Customer</button>
+        <button type="button" aria-pressed="false" data-src="img/ccos2_jobsite.jpg"  data-cap="The same ranking by job site.">Job site</button>
+        <button type="button" aria-pressed="false" data-src="img/ccos3_product.jpg"  data-cap="The same ranking by product.">Product</button>
+        <button type="button" aria-pressed="false" data-src="img/ccos4_project.jpg"  data-cap="The same ranking by project, with the improvement scatter and delivery map below.">Project</button>
+        <button type="button" aria-pressed="false" data-src="img/ccos5_details.jpg"   data-cap="View Details: every delivery behind the selected project, with truck, quantity, cost to service and cycle time.">View Details</button>
+      </div>
+      <figure class="shot"><a href="img/ccos1_customer.jpg" target="_blank" rel="noopener"><img src="img/ccos1_customer.jpg" width="1274" height="690" alt="Customer Cost of Service dashboard, customer view"></a><figcaption>Customers ranked by annualized cost impact against the average, with the cost drivers beside each one.</figcaption></figure>
+    </div>
+
+    <div class="live" hidden data-live="ccos" data-title="Customer Cost of Service report">
+      <h3>Live report</h3>
+      <div class="frame"></div>
+      <p class="open"></p>
+    </div>
+  
+  <nav class="pager" aria-label="More dashboards"><a href="index.html#work">&larr; All dashboards</a><a href="tac.html">Truck Activity Comparison &rarr;</a></nav>
+</main>
+
+<footer><div class="wrap">The dashboards on this page use synthetic sample data. No client information appears in them.</div></footer>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
