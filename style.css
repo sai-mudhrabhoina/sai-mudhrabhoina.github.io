@@ -122,3 +122,20 @@ h1.title{font:800 clamp(34px,5.2vw,54px)/1.02 var(--display);margin:0;letter-spa
 .pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:44px;padding-top:18px;border-top:1px solid var(--line)}
 .pager a{padding:8px 14px;border:1px solid var(--line);border-radius:99px;font-size:14px;text-decoration:none;background:var(--card)}
 .pager a:hover{border-color:var(--ink)}
+
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 4px}
+.tags span{padding:2px 9px;border:1px solid var(--line);border-radius:99px;font-size:12px;color:var(--muted)}
+header.top .tags.big{margin:12px 0 0}
+header.top .tags.big span{font-size:13px;padding:3px 11px;background:var(--chip);border-color:transparent}
+.filters{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.fgroup{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fgroup .lab{font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);min-width:72px}
+.fgroup button{font:600 13px/1 var(--body);padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.fgroup button:hover{border-color:var(--ink)}
+.fgroup button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count{margin:12px 0 0;font-size:14px;color:var(--muted)}
+.card p.fits{font-size:13px}
+.card p.fits b{color:var(--ink);font-weight:600}
+.fitsline{margin:8px 0 0;font-size:14px;color:var(--muted)}
+.fitsline b{color:var(--ink);font-weight:600}
+.card[hidden]{display:none}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truck Usage · Sai Raghava Mudhrabhoina</title>
+<meta name="description" content="Shows how much of the time each truck is working, by plant, ownership and capacity, and what the unused time is worth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-project="tu">
+
+<div class="bar">
+  <div class="wrap">
+    <span class="loc">Toronto, ON</span>
+    <ul aria-label="Contact">
+      <li><a href="mailto:sairaghavsql@gmail.com">sairaghavsql@gmail.com</a></li>
+      <li><a href="tel:+15485422198">+1 (548) 542-2198</a></li>
+      <li><a href="https://www.linkedin.com/in/sai-mudhrabhoina-4414b4220" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="crumb" href="index.html#work">&larr; All dashboards</a>
+    <div class="titlerow"><span class="num">04</span><h1 class="title">Truck Usage</h1></div>
+    <p class="tags big"><span>Built for Construction & materials</span><span>Operations & logistics</span></p>
+    <p class="fitsline"><b>Also applies to:</b> Logistics & distribution, Equipment rental, Manufacturing</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notes" hidden data-notes>
+    <div data-note-box="problem" hidden><h3>The problem</h3><p data-note="problem"></p></div>
+    <div data-note-box="role" hidden><h3>My role</h3><p data-note="role"></p></div>
+  </div>
+
+  <div class="intro">
+      <div>
+        <p>Shows how much of the time each truck is actually working, by plant, ownership and truck capacity. Rank every truck, compare it with the fleet average and the same period last year, and see what the unused time is worth. Switch the table to a month by month heatmap to spot idle periods.</p>
+        <h3>Questions it answers</h3>
+        <ul>
+          <li>Which trucks are working the least, and in which plant?</li>
+          <li>Is usage rising or falling against last year?</li>
+          <li>What is the unused time worth in dollars?</li>
+        </ul>
+        <ul class="chips" aria-label="Details">
+          <li>Construction materials</li>
+          <li>44 DAX measures</li>
+          <li>Imperial and metric</li>
+          <li>Row-level security</li>
+          <li>Usage heatmap</li>
+        </ul>
+      </div>
+      <div>
+        <div class="video"><video controls preload="metadata" playsinline poster="img/tu1_overview.jpg" aria-label="Walkthrough of the Truck Usage dashboard"><source src="video/tu_demo.mp4" type="video/mp4"></video></div>
+        <p class="vnote">20-second silent walkthrough, including the monthly heatmap.</p>
+      </div>
+    </div>
+
+    <div class="shots" data-shots>
+      <h3>Screenshots</h3>
+      <div class="tabs" role="group" aria-label="Truck Usage screenshots">
+        <button type="button" aria-pressed="true" data-src="img/tu1_overview.jpg" data-cap="Usage by plant, ownership and truck capacity, with every truck ranked on usage, delivered volume and the dollar opportunity.">Fleet</button>
+        <button type="button" aria-pressed="false" data-src="img/tu2_truck.jpg" data-cap="A selected truck: its usage trend against the fleet average, and its place on the map and in its plant.">Selected truck</button>
+        <button type="button" aria-pressed="false" data-src="img/tu3_calendar.jpg" data-cap="The same table as a month by month heatmap, so idle months stand out for every truck.">Monthly heatmap</button>
+      </div>
+      <figure class="shot"><a href="img/tu1_overview.jpg" target="_blank" rel="noopener"><img src="img/tu1_overview.jpg" width="1274" height="690" alt="Truck Usage dashboard, fleet" loading="lazy"></a><figcaption>Usage by plant, ownership and truck capacity, with every truck ranked on usage, delivered volume and the dollar opportunity.</figcaption></figure>
+    </div>
+
+    <div class="live" hidden data-live="tu" data-title="Truck Usage report">
+      <h3>Live report</h3>
+      <div class="frame"></div>
+      <p class="open"></p>
+    </div>
+  
+  <nav class="pager" aria-label="More dashboards"><a href="oat.html">&larr; Order Activity Tracker</a><a href="ba.html">Batching Accuracy &rarr;</a></nav>
+</main>
+
+<footer><div class="wrap">The dashboards on this page use synthetic sample data. No client information appears in them.</div></footer>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -30,6 +30,40 @@
     if (any) wrap.hidden = false;
   }
 
+  /* Dashboard filters (home page). Without JavaScript every card simply shows. */
+  var fbox = document.querySelector("[data-filters]");
+  if (fbox) {
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".card[data-industry]"));
+    var groups = [["industry","Industry"],["theme","Focus"]], state = {industry:"All", theme:"All"};
+    var countEl = document.querySelector("[data-count]");
+    function apply(){
+      var shown = 0;
+      cards.forEach(function(c){
+        var ok = groups.every(function(g){ return state[g[0]] === "All" || c.getAttribute("data-" + g[0]).split("|").indexOf(state[g[0]]) >= 0; });
+        c.hidden = !ok; if (ok) shown++;
+      });
+      countEl.textContent = "Showing " + shown + " of " + cards.length + " dashboards";
+      fbox.querySelectorAll("button").forEach(function(b){
+        b.setAttribute("aria-pressed", state[b.getAttribute("data-g")] === b.getAttribute("data-v") ? "true" : "false");
+      });
+    }
+    groups.forEach(function(g){
+      var vals = [];
+      cards.forEach(function(c){ c.getAttribute("data-" + g[0]).split("|").forEach(function(v){ if (vals.indexOf(v) < 0) vals.push(v); }); });
+      if (vals.length < 2) return;
+      var row = document.createElement("div"); row.className = "fgroup"; row.setAttribute("role","group"); row.setAttribute("aria-label", g[1]);
+      var lab = document.createElement("span"); lab.className = "lab"; lab.textContent = g[1]; row.appendChild(lab);
+      ["All"].concat(vals).forEach(function(v){
+        var b = document.createElement("button"); b.type = "button"; b.textContent = v;
+        b.setAttribute("data-g", g[0]); b.setAttribute("data-v", v);
+        b.addEventListener("click", function(){ state[g[0]] = v; apply(); });
+        row.appendChild(b);
+      });
+      fbox.appendChild(row);
+    });
+    if (fbox.children.length) { fbox.hidden = false; countEl.hidden = false; apply(); }
+  }
+
   /* Screenshot tabs */
   document.querySelectorAll("[data-shots]").forEach(function(group){
     var img = group.querySelector("img"), link = group.querySelector(".shot a"), cap = group.querySelector("figcaption");

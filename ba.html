@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batching Accuracy · Sai Raghava Mudhrabhoina</title>
+<meta name="description" content="Compares what each batch was meant to contain with what was actually batched, and prices the difference by material and plant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-project="ba">
+
+<div class="bar">
+  <div class="wrap">
+    <span class="loc">Toronto, ON</span>
+    <ul aria-label="Contact">
+      <li><a href="mailto:sairaghavsql@gmail.com">sairaghavsql@gmail.com</a></li>
+      <li><a href="tel:+15485422198">+1 (548) 542-2198</a></li>
+      <li><a href="https://www.linkedin.com/in/sai-mudhrabhoina-4414b4220" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="crumb" href="index.html#work">&larr; All dashboards</a>
+    <div class="titlerow"><span class="num">05</span><h1 class="title">Batching Accuracy</h1></div>
+    <p class="tags big"><span>Built for Construction & materials</span><span>Process quality</span></p>
+    <p class="fitsline"><b>Also applies to:</b> Manufacturing, Food & beverage</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="notes" hidden data-notes>
+    <div data-note-box="problem" hidden><h3>The problem</h3><p data-note="problem"></p></div>
+    <div data-note-box="role" hidden><h3>My role</h3><p data-note="role"></p></div>
+  </div>
+
+  <div class="intro">
+      <div>
+        <p>Compares what each batch was meant to contain with what was actually batched. See deliveries in tolerance by plant over time, the spread of every batch for each material, and the cost of over and under batching by plant and material. View Details lists every batch behind a selection.</p>
+        <h3>Questions it answers</h3>
+        <ul>
+          <li>Which plants and materials are batching outside tolerance?</li>
+          <li>How wide is the spread around target for each material?</li>
+          <li>What does over and under batching cost?</li>
+        </ul>
+        <ul class="chips" aria-label="Details">
+          <li>Construction materials</li>
+          <li>157 DAX measures</li>
+          <li>Imperial and metric</li>
+          <li>Tolerance checks</li>
+          <li>Batch-level detail</li>
+        </ul>
+      </div>
+      <div>
+        <div class="video"><video controls preload="metadata" playsinline poster="img/ba1_overview.jpg" aria-label="Walkthrough of the Batching Accuracy dashboard"><source src="video/ba_demo.mp4" type="video/mp4"></video></div>
+        <p class="vnote">20-second silent walkthrough, including the View Details page.</p>
+      </div>
+    </div>
+
+    <div class="shots" data-shots>
+      <h3>Screenshots</h3>
+      <div class="tabs" role="group" aria-label="Batching Accuracy screenshots">
+        <button type="button" aria-pressed="true" data-src="img/ba1_overview.jpg" data-cap="Deliveries in tolerance by plant over time, with cost impact, average variation and out-of-tolerance counts by material.">Overview</button>
+        <button type="button" aria-pressed="false" data-src="img/ba2_material.jpg" data-cap="Pick a material to see how every batch compares with target, plant by plant.">Material spread</button>
+        <button type="button" aria-pressed="false" data-src="img/ba3_details.jpg" data-cap="View Details: every batch for the selected plant, with target, actual, difference and cost impact.">Batch details</button>
+      </div>
+      <figure class="shot"><a href="img/ba1_overview.jpg" target="_blank" rel="noopener"><img src="img/ba1_overview.jpg" width="1274" height="690" alt="Batching Accuracy dashboard, overview" loading="lazy"></a><figcaption>Deliveries in tolerance by plant over time, with cost impact, average variation and out-of-tolerance counts by material.</figcaption></figure>
+    </div>
+
+    <div class="live" hidden data-live="ba" data-title="Batching Accuracy report">
+      <h3>Live report</h3>
+      <div class="frame"></div>
+      <p class="open"></p>
+    </div>
+  
+  <nav class="pager" aria-label="More dashboards"><a href="tu.html">&larr; Truck Usage</a><a href="index.html#work">All dashboards &rarr;</a></nav>
+</main>
+
+<footer><div class="wrap">The dashboards on this page use synthetic sample data. No client information appears in them.</div></footer>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
