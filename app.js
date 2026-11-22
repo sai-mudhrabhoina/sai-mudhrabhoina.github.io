@@ -64,6 +64,32 @@
     if (fbox.children.length) { fbox.hidden = false; countEl.hidden = false; apply(); }
   }
 
+  /* Card slider (home page) */
+  var track = document.querySelector(".cards");
+  if (track) {
+    var nav = document.createElement("div"); nav.className = "slidernav"; nav.hidden = true;
+    nav.innerHTML = '<span class="pos" aria-live="polite"></span><button type="button" aria-label="Previous dashboards">&larr;</button><button type="button" aria-label="Next dashboards">&rarr;</button>';
+    track.parentNode.insertBefore(nav, track.nextSibling);
+    var prevB = nav.querySelectorAll("button")[0], nextB = nav.querySelectorAll("button")[1], pos = nav.querySelector(".pos");
+    function step(){ var c = track.querySelector(".card:not([hidden])"); return c ? c.getBoundingClientRect().width + 18 : track.clientWidth; }
+    function sync(){
+      var visible = track.querySelectorAll(".card:not([hidden])").length;
+      var overflow = track.scrollWidth - track.clientWidth > 4;
+      nav.hidden = !overflow;
+      prevB.disabled = track.scrollLeft < 4;
+      nextB.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      var first = Math.min(visible, Math.round(track.scrollLeft / step()) + 1);
+      var per = Math.max(1, Math.round(track.clientWidth / step()));
+      pos.textContent = visible ? first + "–" + Math.min(visible, first + per - 1) + " of " + visible : "";
+    }
+    prevB.addEventListener("click", function(){ track.scrollBy({left: -step() * Math.max(1, Math.round(track.clientWidth / step())), behavior: "smooth"}); setTimeout(sync, 450); });
+    nextB.addEventListener("click", function(){ track.scrollBy({left: step() * Math.max(1, Math.round(track.clientWidth / step())), behavior: "smooth"}); setTimeout(sync, 450); });
+    track.addEventListener("scroll", function(){ window.requestAnimationFrame(sync); });
+    window.addEventListener("resize", sync);
+    document.addEventListener("click", function(e){ if (e.target.closest && e.target.closest(".fgroup button")) { track.scrollLeft = 0; setTimeout(sync, 50); } });
+    sync();
+  }
+
   /* Screenshot tabs */
   document.querySelectorAll("[data-shots]").forEach(function(group){
     var img = group.querySelector("img"), link = group.querySelector(".shot a"), cap = group.querySelector("figcaption");
