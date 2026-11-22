@@ -30,64 +30,51 @@
     if (any) wrap.hidden = false;
   }
 
-  /* Dashboard filters (home page). Without JavaScript every card simply shows. */
-  var fbox = document.querySelector("[data-filters]");
-  if (fbox) {
-    var cards = Array.prototype.slice.call(document.querySelectorAll(".card[data-industry]"));
+  /* Dashboard filters and "show more" (home page). Without JavaScript every card simply shows. */
+  var track = document.querySelector(".cards");
+  if (track) {
+    var cards = Array.prototype.slice.call(track.querySelectorAll(".card[data-industry]"));
+    var LIMIT = 3, expanded = false;
+    var fbox = document.querySelector("[data-filters]"), countEl = document.querySelector("[data-count]");
     var groups = [["industry","Industry"],["theme","Focus"]], state = {industry:"All", theme:"All"};
-    var countEl = document.querySelector("[data-count]");
+    var moreBar = document.createElement("div"); moreBar.className = "morebar"; moreBar.hidden = true;
+    var moreBtn = document.createElement("button"); moreBtn.type = "button"; moreBar.appendChild(moreBtn);
+    track.parentNode.insertBefore(moreBar, track.nextSibling);
     function apply(){
-      var shown = 0;
+      var matched = 0, shown = 0;
       cards.forEach(function(c){
         var ok = groups.every(function(g){ return state[g[0]] === "All" || c.getAttribute("data-" + g[0]).split("|").indexOf(state[g[0]]) >= 0; });
-        c.hidden = !ok; if (ok) shown++;
+        var hide = !ok || (!expanded && matched >= LIMIT);
+        if (ok) matched++;
+        c.hidden = hide; if (!hide) shown++;
       });
-      countEl.textContent = "Showing " + shown + " of " + cards.length + " dashboards";
-      fbox.querySelectorAll("button").forEach(function(b){
+      if (countEl) countEl.textContent = "Showing " + shown + " of " + cards.length + " dashboards";
+      moreBar.hidden = matched <= LIMIT;
+      moreBtn.textContent = expanded ? "Show fewer dashboards" : "Show all " + matched + " dashboards";
+      moreBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+      if (fbox) fbox.querySelectorAll("button").forEach(function(b){
         b.setAttribute("aria-pressed", state[b.getAttribute("data-g")] === b.getAttribute("data-v") ? "true" : "false");
       });
     }
-    groups.forEach(function(g){
-      var vals = [];
-      cards.forEach(function(c){ c.getAttribute("data-" + g[0]).split("|").forEach(function(v){ if (vals.indexOf(v) < 0) vals.push(v); }); });
-      if (vals.length < 2) return;
-      var row = document.createElement("div"); row.className = "fgroup"; row.setAttribute("role","group"); row.setAttribute("aria-label", g[1]);
-      var lab = document.createElement("span"); lab.className = "lab"; lab.textContent = g[1]; row.appendChild(lab);
-      ["All"].concat(vals).forEach(function(v){
-        var b = document.createElement("button"); b.type = "button"; b.textContent = v;
-        b.setAttribute("data-g", g[0]); b.setAttribute("data-v", v);
-        b.addEventListener("click", function(){ state[g[0]] = v; apply(); });
-        row.appendChild(b);
+    moreBtn.addEventListener("click", function(){ expanded = !expanded; apply(); });
+    if (fbox) {
+      groups.forEach(function(g){
+        var vals = [];
+        cards.forEach(function(c){ c.getAttribute("data-" + g[0]).split("|").forEach(function(v){ if (vals.indexOf(v) < 0) vals.push(v); }); });
+        if (vals.length < 2) return;
+        var row = document.createElement("div"); row.className = "fgroup"; row.setAttribute("role","group"); row.setAttribute("aria-label", g[1]);
+        var lab = document.createElement("span"); lab.className = "lab"; lab.textContent = g[1]; row.appendChild(lab);
+        ["All"].concat(vals).forEach(function(v){
+          var b = document.createElement("button"); b.type = "button"; b.textContent = v;
+          b.setAttribute("data-g", g[0]); b.setAttribute("data-v", v);
+          b.addEventListener("click", function(){ state[g[0]] = v; apply(); });
+          row.appendChild(b);
+        });
+        fbox.appendChild(row);
       });
-      fbox.appendChild(row);
-    });
-    if (fbox.children.length) { fbox.hidden = false; countEl.hidden = false; apply(); }
-  }
-
-  /* Card slider (home page) */
-  var track = document.querySelector(".cards");
-  if (track) {
-    var nav = document.createElement("div"); nav.className = "slidernav"; nav.hidden = true;
-    nav.innerHTML = '<span class="pos" aria-live="polite"></span><button type="button" aria-label="Previous dashboards">&larr;</button><button type="button" aria-label="Next dashboards">&rarr;</button>';
-    track.parentNode.insertBefore(nav, track.nextSibling);
-    var prevB = nav.querySelectorAll("button")[0], nextB = nav.querySelectorAll("button")[1], pos = nav.querySelector(".pos");
-    function step(){ var c = track.querySelector(".card:not([hidden])"); return c ? c.getBoundingClientRect().width + 18 : track.clientWidth; }
-    function sync(){
-      var visible = track.querySelectorAll(".card:not([hidden])").length;
-      var overflow = track.scrollWidth - track.clientWidth > 4;
-      nav.hidden = !overflow;
-      prevB.disabled = track.scrollLeft < 4;
-      nextB.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      var first = Math.min(visible, Math.round(track.scrollLeft / step()) + 1);
-      var per = Math.max(1, Math.round(track.clientWidth / step()));
-      pos.textContent = visible ? first + "–" + Math.min(visible, first + per - 1) + " of " + visible : "";
+      if (fbox.children.length) { fbox.hidden = false; if (countEl) countEl.hidden = false; }
     }
-    prevB.addEventListener("click", function(){ track.scrollBy({left: -step() * Math.max(1, Math.round(track.clientWidth / step())), behavior: "smooth"}); setTimeout(sync, 450); });
-    nextB.addEventListener("click", function(){ track.scrollBy({left: step() * Math.max(1, Math.round(track.clientWidth / step())), behavior: "smooth"}); setTimeout(sync, 450); });
-    track.addEventListener("scroll", function(){ window.requestAnimationFrame(sync); });
-    window.addEventListener("resize", sync);
-    document.addEventListener("click", function(e){ if (e.target.closest && e.target.closest(".fgroup button")) { track.scrollLeft = 0; setTimeout(sync, 50); } });
-    sync();
+    apply();
   }
 
   /* Screenshot tabs */
